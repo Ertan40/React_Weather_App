@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-// import Footer from "./components/Footer"
+import CityInput from "./components/CityInput";
 import Main from "./components/Main";
 
 function App() {
@@ -55,15 +55,11 @@ function App() {
     <>
       <img src="/header.jpg" alt="banner" className="banner-img" />
       <div className="app-container">
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            value={inputCity}
-            onChange={(e) => setInputCity(e.target.value)}
-            placeholder="Enter city name"
-          />
-          <button type="submit">Get weather</button>
-        </form>
+        <CityInput
+          inputCity={inputCity}
+          onInputChange={setInputCity}
+          onSubmit={handleSubmit}
+        />
 
         {data ? (
           <Main data={data} />
@@ -71,6 +67,12 @@ function App() {
           <div>Data not found or invalid city name</div>
         )}
       </div>
+
+      <footer>
+        <p className="footer-p">
+          © UNTITLED. ALL RIGHTS RESERVED. | DESIGN BY <strong>Ertan</strong>
+        </p>
+      </footer>
     </>
   );
 }
